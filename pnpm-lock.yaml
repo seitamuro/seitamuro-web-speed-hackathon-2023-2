@@ -23,6 +23,9 @@ dependencies:
   '@koa/router':
     specifier: 12.0.0
     version: 12.0.0
+  '@loadable/component':
+    specifier: 5.16.3
+    version: 5.16.3(react@18.2.0)
   '@types/koa-session':
     specifier: 5.10.6
     version: 5.10.6
@@ -1332,6 +1335,18 @@ packages:
       koa-compose: 4.1.0
       methods: 1.1.2
       path-to-regexp: 6.2.1
+    dev: false
+
+  /@loadable/component@5.16.3(react@18.2.0):
+    resolution: {integrity: sha512-2mVvHs2988oVX2/zM0y6nYhJ4rTVHhkhRnpupBA0Rjl5tS8op9uSR4u5SLVfMLxzpspr2UiIBQD+wEuMsuq4Dg==}
+    engines: {node: '>=8'}
+    peerDependencies:
+      react: ^16.3.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@babel/runtime': 7.20.6
+      hoist-non-react-statics: 3.3.2
+      react: 18.2.0
+      react-is: 16.13.1
     dev: false
 
   /@mapbox/node-pre-gyp@1.0.10:
