@@ -41,9 +41,6 @@ dependencies:
   classnames:
     specifier: 2.3.2
     version: 2.3.2
-  core-js:
-    specifier: 3.29.0
-    version: 3.29.0
   currency-formatter:
     specifier: 1.5.9
     version: 1.5.9
@@ -2622,11 +2619,6 @@ packages:
 
   /copy-to@2.0.1:
     resolution: {integrity: sha512-3DdaFaU/Zf1AnpLiFDeNCD4TOWe3Zl2RZaTzUvWiIk5ERzcCodOE20Vqq4fzCbNoHURFHT4/us/Lfq+S2zyY4w==}
-    dev: false
-
-  /core-js@3.29.0:
-    resolution: {integrity: sha512-VG23vuEisJNkGl6XQmFJd3rEG/so/CNatqeE+7uZAwTSwFeB/qaO0be8xZYUNWprJ/GIwL8aMt9cj1kvbpTZhg==}
-    requiresBuild: true
     dev: false
 
   /core-util-is@1.0.3:
