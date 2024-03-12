@@ -36,12 +36,12 @@ async function loadImageAsDataURL(url: string): Promise<string> {
 }
 
 type Props = {
-  product: ProductFragmentResponse;
+  product?: ProductFragmentResponse;
   title: string;
 };
 
 export const ProductHeroImage: FC<Props> = memo(({ product, title }) => {
-  const thumbnailFile = product.media.find((productMedia) => productMedia.isThumbnail)?.file;
+  const thumbnailFile = product?.media.find((productMedia) => productMedia.isThumbnail)?.file;
 
   const [imageDataUrl, setImageDataUrl] = useState<string>();
 
@@ -61,7 +61,7 @@ export const ProductHeroImage: FC<Props> = memo(({ product, title }) => {
       {({ deviceType }) => {
         return (
           <WidthRestriction>
-            <Anchor href={`/product/${product.id}`}>
+            <Anchor href={`/product/${product?.id}`}>
               <div className={styles.container()}>
                 <AspectRatio ratioHeight={9} ratioWidth={16}>
                   <img className={styles.image()} src={imageDataUrl} />
@@ -82,7 +82,7 @@ export const ProductHeroImage: FC<Props> = memo(({ product, title }) => {
                       [styles.description__mobile()]: deviceType === DeviceType.MOBILE,
                     })}
                   >
-                    {product.name}
+                    {product?.name}
                   </p>
                 </div>
               </div>

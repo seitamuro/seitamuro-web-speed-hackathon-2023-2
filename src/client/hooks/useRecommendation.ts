@@ -1,11 +1,11 @@
-import { useSuspenseQuery_experimental as useSuspenseQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 
 import type { GetRecommendationsQueryResponse } from '../graphql/queries';
 import { GetRecommendationsQuery } from '../graphql/queries';
 import { webp_converter } from '../utils/webp_converter';
 
 export const useRecommendation = () => {
-  const recommendationsResult = useSuspenseQuery<GetRecommendationsQueryResponse>(GetRecommendationsQuery);
+  const recommendationsResult = useQuery<GetRecommendationsQueryResponse>(GetRecommendationsQuery);
 
   const hour = window.Temporal.Now.plainTimeISO().hour;
   const recommendations = recommendationsResult?.data?.recommendations;
