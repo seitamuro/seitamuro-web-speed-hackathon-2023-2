@@ -1,7 +1,5 @@
 import { useFormik } from 'formik';
-import { cloneDeep } from 'lodash-es';
 import type { ChangeEventHandler, FC } from 'react';
-import zipcodeJa from 'zipcode-ja';
 
 import { PrimaryButton } from '../../foundation/PrimaryButton';
 import { TextInput } from '../../foundation/TextInput';
@@ -19,6 +17,27 @@ type Props = {
   onSubmit: (orderFormValue: OrderFormValue) => void;
 };
 
+type Address = {
+  status: number;
+  message: string;
+  results: {
+    zipcode: string;
+    prefcode: string;
+    address1: string;
+    address2: string;
+    address3: string;
+    kana1: string;
+    kana2: string;
+    kana3: string;
+  }[];
+}
+
+const fetchAddress = async (zipCode: string) => {
+  const response = await fetch(`https://zipcloud.ibsnet.co.jp/api/search?zipcode=${zipCode}`)
+  const data = await response.json();
+  return data as Address;
+}
+
 export const OrderForm: FC<Props> = ({ onSubmit }) => {
   const formik = useFormik<OrderFormValue>({
     initialValues: {
@@ -30,16 +49,21 @@ export const OrderForm: FC<Props> = ({ onSubmit }) => {
     onSubmit,
   });
 
-  const handleZipcodeChange: ChangeEventHandler<HTMLInputElement> = (event) => {
+  const handleZipcodeChange: ChangeEventHandler<HTMLInputElement> = async (event) => {
     formik.handleChange(event);
 
     const zipCode = event.target.value;
-    const address = [...(cloneDeep(zipcodeJa)[zipCode]?.address ?? [])];
-    const prefecture = address.shift();
-    const city = address.join(' ');
+    if (zipCode.length !== 7) {
+      return;
+    }
 
-    formik.setFieldValue('prefecture', prefecture);
-    formik.setFieldValue('city', city);
+    console.log("zipCode", zipCode)
+    const data = await fetchAddress(zipCode);
+    if (data !== null) {
+      formik.setFieldValue('prefecture', data.results[0].address1);
+      formik.setFieldValue('city', data.results[0].address2);
+    }
+
   };
 
   return (
