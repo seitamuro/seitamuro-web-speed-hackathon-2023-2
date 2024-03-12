@@ -61,7 +61,7 @@ export const OrderForm: FC<Props> = ({ onSubmit }) => {
     const data = await fetchAddress(zipCode);
     if (data !== null) {
       formik.setFieldValue('prefecture', data.results[0].address1);
-      formik.setFieldValue('city', data.results[0].address2);
+      formik.setFieldValue('city', `${data.results[0].address2}${data.results[0].address3}`);
     }
 
   };
