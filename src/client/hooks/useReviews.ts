@@ -4,6 +4,7 @@ import { useErrorHandler } from 'react-error-boundary';
 
 import type { GetProductReviewsQueryResponse } from '../graphql/queries';
 import { GetProductReviewsQuery } from '../graphql/queries';
+import { webp_converter } from '../utils/webp_converter';
 
 export const useReviews = (productId: number | undefined) => {
   const handleError = useErrorHandler();
@@ -28,6 +29,9 @@ export const useReviews = (productId: number | undefined) => {
   }, [loadReviews, productId]);
 
   const reviews = reviewsResult.data?.product.reviews;
+  reviews?.map((review) => {
+    review.user.profile.avatar.filename = webp_converter(review.user.profile.avatar.filename);
+  });
 
   return { reviews };
 };
