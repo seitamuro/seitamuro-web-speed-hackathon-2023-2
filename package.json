@@ -27,7 +27,6 @@
     "@types/koa-session": "5.10.6",
     "@types/lodash-es": "4.17.12",
     "bcrypt": "5.1.0",
-    "canvaskit-wasm": "0.38.0",
     "classnames": "2.3.2",
     "currency-formatter": "1.5.9",
     "formik": "2.2.9",
