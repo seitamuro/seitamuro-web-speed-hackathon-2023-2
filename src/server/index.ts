@@ -57,8 +57,21 @@ async function init(): Promise<void> {
     }),
   );
 
-  app.use(serve(rootResolve('dist')));
-  app.use(serve(rootResolve('public')));
+  app.use(
+    serve(rootResolve('dist'), {
+      maxage: 1000 * 60 * 60 * 24 * 365,
+      setHeaders(res) {
+        res.setHeader('Cache-Control', 'public, max-age=31536000');
+      },
+    }),
+  );
+  app.use(
+    serve(rootResolve('public'), {
+      setHeaders(res) {
+        res.setHeader('Cache-Control', 'public, max-age=31536000');
+      },
+    }),
+  );
   app.use(
     compress({
       br: false,
