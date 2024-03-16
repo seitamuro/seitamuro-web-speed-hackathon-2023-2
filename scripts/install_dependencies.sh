@@ -1,4 +1,3 @@
 #!/bin/bash
-cd ../
-pwd
+cd /home/ec2-user
 pnpm install
