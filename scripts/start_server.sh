@@ -1,3 +1,3 @@
 #!/bin/bash
-cd /home/ec2-user
+cd ../
 ./bin/node_modules/.bin/ts-node ./src/server/index.ts
