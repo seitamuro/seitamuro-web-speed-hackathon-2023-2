@@ -1,2 +1,2 @@
 #!/bin/bash
-docker run -d --rm -p 80:8080 webspeedhackathon2023:latest
+./bin/node_modules/.bin/ts-node ./src/server/index.ts

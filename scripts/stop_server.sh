@@ -1,6 +1,2 @@
 #!/bin/bash
-containers=$(docker ps -a -q)
-if [ -n "$containers" ]; then
-  docker stop $containers
-fi
-docker system prune -f
+pid = ps aux | grep ts-node | grep -v grep | awk '{print $2}'
