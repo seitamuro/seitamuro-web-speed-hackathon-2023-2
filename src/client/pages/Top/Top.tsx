@@ -20,7 +20,7 @@ export const Top: FC = () => {
   return (
     <>
       <Helmet>
-        <title>test</title>
+        <title>買えるオーガニック</title>
       </Helmet>
       <Layout>
         <div>
