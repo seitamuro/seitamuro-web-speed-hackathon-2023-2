@@ -6,11 +6,11 @@
     <meta name="robots" content="noindex" />
     <title><%= title %></title>
 
+    <script type="module" src="<%= module %>"></script>
+
     <% for (var href of videos) { %>
     <link rel="preload" as="video" fetchPriority="high" href="<%= href %>" />
     <% } %>
-
-    <script type="module" src="<%= module %>"></script>
   </head>
 
   <body>
